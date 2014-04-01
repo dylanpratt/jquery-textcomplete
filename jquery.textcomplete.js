@@ -300,6 +300,7 @@
        * Returns caret's relative coordinates from textarea's left top corner.
        */
       getCaretPosition: function () {
+        console.log('in getCaretPosition');
         // Browser native API does not provide the way to know the position of
         // caret in pixels, so that here we use a kind of hack to accomplish
         // the aim. First of all it puts a div element and completely copies
@@ -333,6 +334,10 @@
         position.top += $span.height() - this.$el.scrollTop();
         if (dir === 'rtl') { position.left -= this.listView.$el.width(); }
         $div.remove();
+        // If the strategy has the 'position' option set to 'top', move the position above the element
+        if(this.strategy === "top") {
+          console.log("top it up!")
+        }
         return position;
       },
 
@@ -400,6 +405,7 @@
       shown: false,
 
       render: function (data) {
+        console.log('in render');
         var html, i, l, index, val;
 
         html = '';
